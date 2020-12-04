@@ -69,7 +69,7 @@ To solve the methioned problem, do the following steps:
     ```sh
     ../node_modules/.bin/electron-rebuild --proxy http://127.0.0.1:3561 -dist-url=https://npm.taobao.org/mirrors/atom-shell
     ```
-4. Copy corresponding version of [serialport bindings](https://github.com/serialport/node-serialport/tags). into "app\node_modules\@serialport\bindings\build\Release" folder. Check which version of binding to use with the following table.
+4. Copy corresponding version of [serialport bindings](https://github.com/serialport/node-serialport/tags) into "app\node_modules\@serialport\bindings\build\Release" folder. Check which version of binding to use with the following table.
 
 | Node version  | serialport binding |
 | ------------- |:------------------:|
