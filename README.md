@@ -41,3 +41,21 @@ yarn add <package names> --proxy <local proxy IP address> (http://127.0.0.1:3561
 ```sh
 yarn add <package names> --ignore-engines --registry=https://registry.npm.taobao.org 
 ```
+
+# Electron Rebuild 
+### Integrate @serialport module
+If the following error is encountered during the rebuild stage, that means @serialport module is not installed properly, most likely due to the  ***Greate Wall***.
+```sh
+TypeError: argv.t.split is not a function
+```
+```sh
+... cannot find serialport ...
+```
+To solve the methioned problem, do the following steps:
+1. Remove old serialport module from "app/node_modules";
+2. Add new serialport module to "app/node_modules";
+3. Run electron rebuild command, do replace the "--proxy http://127.0.0.1:3561" with your own proxy setting:
+    ```sh
+    ../node_modules/.bin/electron-rebuild --proxy http://127.0.0.1:3561 -dist-url=https://npm.taobao.org/mirrors/atom-shell
+    ```
+4. Copy corresponding version of serialport bindings [serialport bindings download link] (https://github.com/serialport/node-serialport/tags). into "app\node_modules\@serialport\bindings\build\Release" folder. 
