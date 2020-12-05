@@ -161,9 +161,35 @@ ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add serialport
 | ------------- |:------------------:|
 | /tsconfig.json| include & exclude paths|
 | /gitignore    | ignore paths           |
-| /config/webpack.config.base.js | neDBFix; Module Alias|
+| /config/webpack.config.base.js | neDBFix; Module Alias;|
+| /app/menu.dev.ts               | add menu items |
+| /app/app.html                  | include libs |
+| /app/app.global.css            | change global styles|
+
+3. Remove the following folder and files:
+| Folder/Files  | Comments           |
+| ------------- |:------------------:|
+| /components   |                    |
+| /constants    |                    |
+| /containers   |                    |
+| /features     |                    |
+| index.tsx     |                    |
+| menu.ts       |                    |
+| rootReducer.ts|                    |
+| Routes        |                    |
+| store         |                    |
+
+4. Copy files from old app folder into the new one.
 
 # Other development issues
+
+### Could not detect node-abi error
+This error usually happens after a new electron version is installed.
+Run the following command:
+```sh
+ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn upgrade electron-rebuild
+```
+
 ### Electron worker "require is not defined" problem
 Add "nodeIntegrationInWorker:true" in webPreferences.
 
