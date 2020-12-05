@@ -134,3 +134,30 @@ Use fixNedbForElectron plugin for webpack to fix it.
 3. Copy and unzip the downloaded zip file into (C:\Users\UserName\AppData\Roaming\nvm); rename the folder to corresponding version (12.20.0 etc.);
 4. Use nvm to control the node version.
 
+# Example: Upgrade Electron-React App
+1. Git clone electron-react-boilplate into local folder;
+2. Yarn install packages with the following command:
+```sh
+ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn
+```
+3. Install none related modules first:
+```sh
+ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add eventproxy immer lodash nedb dom-to-image js-file-download
+```
+4. Install material UI, make sure to install @material-ui/core first
+```sh
+ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add @material-ui/core
+```
+```sh
+ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add @material-ui/icons @material-ui/lab @material-ui/styles 
+```
+
+5. Install other UI packages:
+```sh
+ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add react-awesome-button recharts
+```
+
+5. Install serialport module:
+```sh
+ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add serialport
+```
