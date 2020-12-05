@@ -143,6 +143,7 @@ ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add material-tab
 6. Install serialport module:
 ```sh
 ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add serialport
+```
 
 ### Migration of old App
 1. Add the following folders and files: 
