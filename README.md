@@ -110,24 +110,6 @@ Do the following to solve the problem:
 yarn package --max_old_space_size=4096
 ```
 
-# Other development issues
-### Electron worker "require is not defined" problem
-Add "nodeIntegrationInWorker:true" in webPreferences.
-
-### Missing Material-table Icons
-Add the following to ***app.html***
-```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-```
-
-### neDB will automatic use broswer DB
-Use fixNedbForElectron plugin for webpack to fix it.
-
-### Fix Platform IO wall problem
-- Use LANTERN PRO, enable "Proxy all traffic" in settings;
-- Enable VPN in Windows Internet Options / Connection
-
-
 ### Use NVM (node version manager) to manage node version
 1. Download and install [nvm-windows](https://github.com/coreybutler/nvm-windows/releases/tag/1.1.7) from github;
 2. Do not install node from nvm command line; download node zip from [this link](https://nodejs.org/en/download/releases/);
@@ -135,6 +117,7 @@ Use fixNedbForElectron plugin for webpack to fix it.
 4. Use nvm to control the node version.
 
 # Example: Upgrade Electron-React App
+### Install packages
 1. Git clone electron-react-boilplate into local folder;
 2. Yarn install packages with the following command:
 ```sh
@@ -154,10 +137,43 @@ ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add @material-ui
 
 5. Install other UI packages:
 ```sh
-ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add react-awesome-button recharts
+ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add material-table mdi-material-ui react-awesome-button recharts
 ```
 
-5. Install serialport module:
+6. Install serialport module:
 ```sh
 ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add serialport
+
+### Migration of old App
+1. Add the following folders and files: 
+
+| Folder/Files  | Comments           |
+| ------------- |:------------------:|
+| /database     | app database       |
+| /worker       | local worker libs  |
+| /my_resources | third party libs   |
+| /configs/nedbHotfixForElectron     |     |
+
+2. Modify the following files:
+| Files         | Comments           |
+| ------------- |:------------------:|
+| /tsconfig.json| include & exclude paths|
+| /gitignore    | ignore paths           |
+| /config/webpack.config.base.js | neDBFix; Module Alias|
+
+# Other development issues
+### Electron worker "require is not defined" problem
+Add "nodeIntegrationInWorker:true" in webPreferences.
+
+### Missing Material-table Icons
+Add the following to ***app.html***
+```html
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 ```
+
+### neDB will automatic use broswer DB
+Use fixNedbForElectron plugin for webpack to fix it.
+
+### Fix Platform IO wall problem
+- Use LANTERN PRO, enable "Proxy all traffic" in settings;
+- Enable VPN in Windows Internet Options / Connection
