@@ -153,9 +153,10 @@ ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add serialport
 | /database     | app database       |
 | /worker       | local worker libs  |
 | /my_resources | third party libs   |
-| /configs/nedbHotfixForElectron     |     |
+| /configs/nedbHotfixForElectron     |   neDB hot fix  |
 
 2. Modify the following files:
+
 | Files         | Comments           |
 | ------------- |:------------------:|
 | /tsconfig.json| include & exclude paths|
