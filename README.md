@@ -95,7 +95,7 @@ node-gyp rebuild --target=7.1.13 --arch=x64 --dist-url=https://npm.taobao.org/mi
 
 # Electron Package 
 ### Connection problem during yarn package
-1. Check the error message, find out what are the missing resources; (mostly probably "nsis" "winCodeSign")
+1. Check the error message, find out what are the missing resources; (most probably "nsis" "winCodeSign")
 2. Download the [missing binaries](https://github.com/electron-userland/electron-builder-binaries), and put into "C:\Users\UserName\AppData\Local\electron-builder\Cache"
 
 ### Out of memroy problem
