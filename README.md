@@ -178,7 +178,6 @@ C:\Users\<username>\AppData\Local\node-gyp\Cache\[version]\x64
 ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn
 ```
 3. Yarn install packages for App:
-A faster way is to install at one go, the following command is to replace step2 to step 5.
 ```sh
 ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add @material-ui/core @material-ui/icons @material-ui/lab @material-ui/styles material-table eventproxy immer lodash nedb dom-to-image js-file-download mdi-material-ui react-awesome-button recharts serialport
 ```
