@@ -94,6 +94,16 @@ node-gyp rebuild --target=7.1.13 --arch=x64 --dist-url=https://npm.taobao.org/mi
 ```
 
 # Electron Package 
+Run the following command
+```sh
+ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn package
+```
+
+### Stuck at packing stage
+Packaging stucks, console displays *"downloading  url=https://github.com/electron/electron/releases/download/<version>//electron-<version>-win32-x64.zip"*;
+This problem is caused by the **Greate Wall**. To solve this problem, download the zip file by copying the url directly into the broswer. 
+Put the downloaded zip file into *"C:\Users\<username>\AppData\Local\electron\Cache"*, then run the packaging again.
+
 ### Connection problem during yarn package
 1. Check the error message, find out what are the missing resources; (most probably "nsis" "winCodeSign")
 2. Download the [missing binaries](https://github.com/electron-userland/electron-builder-binaries), and put into "C:\Users\UserName\AppData\Local\electron-builder\Cache"
@@ -139,7 +149,17 @@ A faster way is to install at one go, the following command is to replace step2 
 ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add @material-ui/core @material-ui/icons @material-ui/lab @material-ui/styles material-table eventproxy immer lodash nedb dom-to-image js-file-download mdi-material-ui react-awesome-button recharts serialport
 ```
 
-4. Do the rest of migration, follow the steps in the following session.
+4. Copy the corresponding version of [serialport bindings](https://github.com/serialport/node-serialport/tags) into the top folder, folder structure should be *"\project-name\build\Release\bindings.node"*.
+Refer to the following table for which version of binding node to use.
+
+| ER boilerplate| electron           | serialport binding   | status   |
+| ------------- |:------------------:|:--------------------:|:--------:|
+| v1.1.0        | v7.1.13            | v75                  | OK       |
+| v1.2.0        | v9.0.4             |                      |          |
+| v1.3.1        | v8.5.0             | v76                  | OK       |
+| v1.4.0        | v11.0.3            |                      | Not supported |
+
+5. Do the rest of migration, follow the steps in the following session.
 
 ### Migration of old App
 1. Add the following folders and files: 
