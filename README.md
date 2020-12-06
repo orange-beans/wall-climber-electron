@@ -19,6 +19,7 @@ yarn config delete proxy
 npm config rm proxy
 npm config rm https-proxy
 ```
+
 # Install packages
 ### Install packages with proxy
 The following methods are tested and proves to be working.
@@ -32,7 +33,7 @@ To install certain packages:
 ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add <package names>
 ```
 
-The following methods may work, and need farther testing:
+The following methods may work, but need farther testing:
 ```sh
 ELECTRON_MIRROR="https://cdn.npm.taobao.org/dist/electron/""  yarn add <<package names>
 ```
@@ -44,11 +45,11 @@ yarn add <package names> --ignore-engines --registry=https://registry.npm.taobao
 ```
 
 ### Electron module failed to install correctly
-If the following problem is encountered during "yarn add electron" or "yarn start", that means it is not able to download electron dist.
+If the following problem is encountered during *"yarn add electron"* or *"yarn start"*, that means it's unable to download from electron dist.
 ```sh
-Electron failed to install correctly, please delete node_modules/electron and try installing again
+[Error] Electron failed to install correctly, please delete node_modules/electron and try installing again
 ```
-To solve the problem, delete "node_modules/electron" folder, and do use TAOBAO mirror to download electron module again.
+To solve the problem, delete "node_modules/electron" folder, and use TAOBAO mirror to download electron module again.
 ```sh
 ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add electron
 ```
@@ -57,12 +58,17 @@ ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add electron
 ### Integrate @serialport module
 If the following error is encountered during the rebuild stage, that means @serialport module is not installed properly, most likely due to the  ***Greate Wall***.
 ```sh
+[Error] 
+An unhandled error occurred inside electron-rebuild
+argv.t.split is not a function
+
 TypeError: argv.t.split is not a function
 ```
 ```sh
+[Error] 
 ... cannot find serialport ...
 ```
-To solve the methioned problem, do the following steps:
+To solve the above problem, follow these steps:
 1. Remove old serialport module from "app/node_modules";
 2. Add new serialport module to "app/node_modules";
 3. Run electron rebuild command, do replace the "--proxy http://127.0.0.1:3561" with your own proxy setting:
