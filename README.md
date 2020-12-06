@@ -72,7 +72,7 @@ TypeError: argv.t.split is not a function
 To solve the above problem, follow these steps:
 1. Remove old serialport module from "app/node_modules";
 2. Add new serialport module to "app/node_modules";
-3. Run electron rebuild command, do replace the "--proxy http://127.0.0.1:3561" with your own proxy setting:
+3. cd into "app" folder, and run electron rebuild command, do replace the "--proxy http://127.0.0.1:3561" with your own proxy setting:
     ```sh
     ../node_modules/.bin/electron-rebuild --proxy http://127.0.0.1:3561 -dist-url=https://npm.taobao.org/mirrors/atom-shell
     ```
@@ -82,6 +82,8 @@ To solve the above problem, follow these steps:
 | ------------- |:------------------:|
 | v10.xx.x      | v57                |
 | v12.xx.x      | v75                |
+
+**NOTE:** If *"app/node_modules/@serialport"* already exists, skip step 1 & 2.
 
 
 ### gyp-rebuild (with mirror)
