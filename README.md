@@ -100,7 +100,7 @@ ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn package
 ```
 
 ### Stuck at packing stage
-Packaging stucks, console displays *"downloading  url=https://github.com/electron/electron/releases/download/Version//electron-[version]-win32-x64.zip"*;
+Packaging stucks, console displays *"downloading  url=https://github.com/electron/electron/releases/download/[version]//electron-[version]-win32-x64.zip"*;
 This problem is caused by the **Greate Wall**. To solve this problem, download the zip file by copying the url directly into the broswer. 
 Put the downloaded zip file into *"C:\Users\<username>\AppData\Local\electron\Cache"*, then run the packaging again.
 
@@ -120,6 +120,40 @@ Do the following to solve the problem:
 yarn package --max_old_space_size=4096
 ```
 
+### Unable to load preload script in packaged app
+Modify the */app/main.dev.ts* file from this:
+
+```Javascript
+mainWindow = new BrowserWindow({
+    show: false,
+    width: 1024,
+    height: 728,
+    fullscreen: true,
+    webPreferences:
+      process.env.NODE_ENV === 'development' || process.env.E2E_BUILD === 'true'
+        ? {
+            nodeIntegration: true
+          }
+        : {
+            preload: path.join(__dirname, 'dist/renderer.prod.js')
+          }
+  });
+```
+
+to this:
+
+```Javascript
+mainWindow = new BrowserWindow({
+    show: false,
+    width: 1024,
+    height: 728,
+    fullscreen: true,
+    webPreferences: {
+      nodeIntegration: true
+    }
+  });
+```
+
 ### MSBuild error
 If the error **"MSBuild.exe ENOENT"** is encountered, that means the MSBuild tool is not properly set, do the following:
 1. Download and install [Visual C++ Build tools](https://go.microsoft.com/fwlink/?LinkId=691126);
@@ -130,10 +164,10 @@ npm config set msvs_version 2015
 ```
 
 If the error **"node.lib fatal error LNK1106"** is encountered, that means node.lib is not downloaded properly. It needs to be manully downloaded.
-1. Download the corresponding version of node.lib from [here](https://nodejs.org/download/release/) (https://nodejs.org/download/release/Version/win-x64/)
+1. Download the corresponding version of node.lib from [here](https://nodejs.org/download/release/) (https://nodejs.org/download/release/[version]/win-x64/)
 2. Copy to replace the node.lib in your local folder:
 ```
-C:\Users\<username>\AppData\Local\node-gyp\Cache\Version\x64
+C:\Users\<username>\AppData\Local\node-gyp\Cache\[version]\x64
 ``` 
 
 # Example: Upgrade Electron-React App
