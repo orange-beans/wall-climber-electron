@@ -213,7 +213,7 @@ ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn upgrade electron
 4. Use nvm to control the node version.
 
 ### Electron worker "require is not defined" problem
-Add "nodeIntegrationInWorker:true" in webPreferences.
+Add "nodeIntegrationInWorker:true" in webPreferences. (Inside menu.ts)
 
 ### Missing Material-table Icons
 Add the following to ***app.html***
