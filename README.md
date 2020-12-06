@@ -102,7 +102,7 @@ yarn package --max_old_space_size=4096
 ```
 
 ### MSBuild error
-If the error "MSBuild.exe ENOENT" is encountered, that means the MSBuild tool is not properly set, do the following:
+If the error ***"MSBuild.exe ENOENT"*** is encountered, that means the MSBuild tool is not properly set, do the following:
 1. Download and install [Visual C++ Build tools](https://go.microsoft.com/fwlink/?LinkId=691126);
 2. Configure npm to use python 2.7 and VS2015:
 ```sh
@@ -110,9 +110,9 @@ npm config set python python2.7
 npm config set msvs_version 2015
 ```
 
-If the error "node.lib fatal error LNK1106" is encountered, that means node.lib is not downloaded properly. It needs to be manully downloaded.
-Download the corresponding version of node.lib from [here](https://nodejs.org/download/release/) (https://nodejs.org/download/release/<version>/win-x64/)
-Copy to replace the node.lib in your local folder:
+If the error ***"node.lib fatal error LNK1106"*** is encountered, that means node.lib is not downloaded properly. It needs to be manully downloaded.
+1. Download the corresponding version of node.lib from [here](https://nodejs.org/download/release/) (https://nodejs.org/download/release/<version>/win-x64/)
+2. Copy to replace the node.lib in your local folder:
 ```
 C:\Users\<username>\AppData\Local\node-gyp\Cache\<version>\x64
 ``` 
