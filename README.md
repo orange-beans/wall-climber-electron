@@ -133,27 +133,13 @@ C:\Users\<username>\AppData\Local\node-gyp\Cache\<version>\x64
 ```sh
 ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn
 ```
-3. Install none related modules first:
+3. Yarn install packages for App:
+A faster way is to install at one go, the following command is to replace step2 to step 5.
 ```sh
-ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add eventproxy immer lodash nedb dom-to-image js-file-download
-```
-4. Install material UI, make sure to install @material-ui/core first
-```sh
-ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add @material-ui/core
-```
-```sh
-ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add @material-ui/icons @material-ui/lab @material-ui/styles 
+ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add @material-ui/core @material-ui/icons @material-ui/lab @material-ui/styles material-table eventproxy immer lodash nedb dom-to-image js-file-download mdi-material-ui react-awesome-button recharts serialport
 ```
 
-5. Install other UI packages:
-```sh
-ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add material-table mdi-material-ui react-awesome-button recharts
-```
-
-6. Install serialport module:
-```sh
-ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add serialport
-```
+4. Do the rest of migration, follow the steps in the following session.
 
 ### Migration of old App
 1. Add the following folders and files: 
@@ -163,7 +149,7 @@ ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add serialport
 | /database     | app database       |
 | /worker       | local worker libs  |
 | /my_resources | third party libs   |
-| /configs/nedbHotfixForElectron     |   neDB hot fix  |
+| /configs/nedbHotfixForElectron.js  |   neDB hot fix plugin  |
 
 2. Modify the following files:
 
@@ -172,7 +158,7 @@ ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add serialport
 | /tsconfig.json| include & exclude paths|
 | /gitignore    | ignore paths           |
 | /config/webpack.config.base.js | neDBFix; Module Alias;|
-| /app/menu.dev.ts               | add menu items |
+| /app/main.dev.ts               | set nodeIntegrationInWorker, enableRemoteModule |
 | /app/app.html                  | include libs |
 | /app/app.global.css            | change global styles|
 
