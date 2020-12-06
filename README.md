@@ -84,15 +84,6 @@ node-gyp rebuild --target=7.1.13 --arch=x64 --dist-url=https://npm.taobao.org/mi
 --dist-url=https://electronjs.org/headers"
 ```
 
-### MSBuild error
-If the error "MSBuild.exe ENOENT" is encountered, that means the MSBuild tool is not properly set, do the following:
-1. Download and install [Visual C++ Build tools](https://go.microsoft.com/fwlink/?LinkId=691126);
-2. Configure npm to use python 2.7 and VS2015:
-```sh
-npm config set python python2.7
-npm config set msvs_version 2015
-```
-
 # Electron Package 
 ### Connection problem during yarn package
 1. Check the error message, find out what are the missing resources; (mostly probably "nsis" "winCodeSign")
@@ -110,11 +101,21 @@ Do the following to solve the problem:
 yarn package --max_old_space_size=4096
 ```
 
-### Use NVM (node version manager) to manage node version
-1. Download and install [nvm-windows](https://github.com/coreybutler/nvm-windows/releases/tag/1.1.7) from github;
-2. Do not install node from nvm command line; download node zip from [this link](https://nodejs.org/en/download/releases/);
-3. Copy and unzip the downloaded zip file into (C:\Users\UserName\AppData\Roaming\nvm); rename the folder to corresponding version (12.20.0 etc.);
-4. Use nvm to control the node version.
+### MSBuild error
+If the error "MSBuild.exe ENOENT" is encountered, that means the MSBuild tool is not properly set, do the following:
+1. Download and install [Visual C++ Build tools](https://go.microsoft.com/fwlink/?LinkId=691126);
+2. Configure npm to use python 2.7 and VS2015:
+```sh
+npm config set python python2.7
+npm config set msvs_version 2015
+```
+
+If the error "node.lib fatal error LNK1106" is encountered, that means node.lib is not downloaded properly. It needs to be manully downloaded.
+Download the corresponding version of node.lib from [here](https://nodejs.org/download/release/) (https://nodejs.org/download/release/<version>/win-x64/)
+Copy to replace the node.lib in your local folder:
+```
+C:\Users\<username>\AppData\Local\node-gyp\Cache\<version>\x64
+``` 
 
 # Example: Upgrade Electron-React App
 ### Install packages
@@ -183,12 +184,33 @@ ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add serialport
 
 # Other development issues
 
+### git clone too slow
+Git clone too slow is usually caused by the ***Great Wall***. To solve this issue, git proxy needs to be set.
+Run the following commands before clone:
+
+```sh
+git config --global https.proxy <local proxy IP address> (http://127.0.0.1:3561)
+git config --global http.proxy <local proxy IP address> (http://127.0.0.1:3561)
+```
+
+To unset the proxy, run the following commands:
+```sh
+git config --global --unset https.proxy
+git config --global --unset http.proxy
+```
+
 ### Could not detect node-abi error
 This error usually happens after a new electron version is installed.
 Run the following command:
 ```sh
 ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn upgrade electron-rebuild
 ```
+
+### Use NVM (node version manager) to manage node version
+1. Download and install [nvm-windows](https://github.com/coreybutler/nvm-windows/releases/tag/1.1.7) from github;
+2. Do not install node from nvm command line; download node zip from [this link](https://nodejs.org/en/download/releases/);
+3. Copy and unzip the downloaded zip file into (C:\Users\UserName\AppData\Roaming\nvm); rename the folder to corresponding version (12.20.0 etc.);
+4. Use nvm to control the node version.
 
 ### Electron worker "require is not defined" problem
 Add "nodeIntegrationInWorker:true" in webPreferences.
