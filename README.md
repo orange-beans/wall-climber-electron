@@ -217,6 +217,7 @@ Refer to the following table for which version of binding node to use.
 | /app/app.global.css            | change global styles|
 
 3. Remove the following folder and files:
+
 | Folder/Files  | Comments           |
 | ------------- |:------------------:|
 | /components   |                    |
@@ -230,6 +231,7 @@ Refer to the following table for which version of binding node to use.
 | store         |                    |
 
 4. Copy files from old app folder into the new one:
+
 | Folder/Files  | Comments           |
 | ------------- |:------------------:|
 | /actions      |                    |
