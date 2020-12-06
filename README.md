@@ -183,7 +183,12 @@ A faster way is to install at one go, the following command is to replace step2 
 ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add @material-ui/core @material-ui/icons @material-ui/lab @material-ui/styles material-table eventproxy immer lodash nedb dom-to-image js-file-download mdi-material-ui react-awesome-button recharts serialport
 ```
 
-4. Copy the corresponding version of [serialport bindings](https://github.com/serialport/node-serialport/tags) into the top folder, folder structure should be *"\project-name\build\Release\bindings.node"*.
+4. cd into */app* folder, run the following command to install serialport as native module for the app:
+```sh
+ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add serialport
+```
+
+Then download the corresponding version of [serialport bindings](https://github.com/serialport/node-serialport/tags) into *"\app\node_modules\@serialport\build\Release\bindings.node"*.
 Refer to the following table for which version of binding node to use.
 
 | ER boilerplate| electron           | serialport binding   | status   |
