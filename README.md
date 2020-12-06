@@ -175,7 +175,24 @@ ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add @material-ui
 | Routes        |                    |
 | store         |                    |
 
-4. Copy files from old app folder into the new one.
+4. Copy files from old app folder into the new one:
+| Folder/Files  | Comments           |
+| ------------- |:------------------:|
+| /actions      |                    |
+| /components   |                    |
+| /configuration |                    |
+| /constants     |                    |
+| /containers    |                    |
+| /drivers       |                    |
+| /features      |                    |
+| /interfaces    |                    |
+| /middlewares   |                    |
+| /reducers      |                    |
+| /routes        |                    |
+| /store         |                    |
+| /tools         |                    |
+| /index.tsx     |                    |
+| /menu.ts       |                    |
 
 # Other development issues
 
