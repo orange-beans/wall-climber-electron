@@ -69,19 +69,31 @@ TypeError: argv.t.split is not a function
 [Error] 
 ... cannot find serialport ...
 ```
+
 To solve the above problem, follow these steps:
-1. Remove old serialport module from "app/node_modules";
-2. Add new serialport module to "app/node_modules";
+1. Remove the installed serialport from "app/nodule_modules", by running:
+```sh
+ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn remove serialport
+```
+
+2. Then install the serialport module with the following command:
+```sh
+ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add serialport@x.x.x
+```
+
 3. cd into "app" folder, and run electron rebuild command, do replace the "--proxy http://127.0.0.1:3561" with your own proxy setting:
     ```sh
     ../node_modules/.bin/electron-rebuild --proxy http://127.0.0.1:3561 -dist-url=https://npm.taobao.org/mirrors/atom-shell
     ```
 4. Copy corresponding version of [serialport bindings](https://github.com/serialport/node-serialport/tags) into "app\node_modules\@serialport\bindings\build\Release" folder. Check which version of binding to use with the following table.
 
-| Node version  | serialport binding |
+| Electron version  | serialport binding |
 | ------------- |:------------------:|
-| v10.xx.x      | v57                |
-| v12.xx.x      | v75                |
+| v7.xx.x       | v75                |
+| v8.xx.x       | v76                |
+| v9.xx.x       | v80                |
+| v10.xx.x      | v82                |
+| v11.xx.x      | v85                |
 
 **NOTE:** If *"app/node_modules/@serialport"* already exists, skip step 1 & 2.
 
