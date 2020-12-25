@@ -207,7 +207,10 @@ Refer to the following table for which version of binding node to use.
 | v1.1.0        | v7.1.13            | v75                  | OK       |
 | v1.2.0        | v9.0.4             | v80                  | OK       |
 | v1.3.1        | v8.5.0             | v76                  | OK       |
-| v1.4.0        | v11.0.3            | v85                  | Not supported |
+| v1.4.0        | v8.5.0             | v76                  | OK       |
+| v1.4.1        | v11.0.3            | v85                  | Not supported |
+| v2.0.0        | v11.0.1            | v85                  | Not supported |
+| v2.0.1        | v11.0.1            | v85                  | Not supported |
 
 5. Do the rest of migration, follow the steps in the following session.
 
