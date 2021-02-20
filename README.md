@@ -28,9 +28,18 @@ To install all packages:
 ```sh
 ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn
 ```
+Or:
+```sh
+yarn --proxy http://127.0.0.1:3561 (local proxy IP address)
+```
+
 To install certain packages:
 ```sh
 ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add <package names>
+```
+Or:
+```sh
+yarn add <package names> --proxy http://127.0.0.1:3561 (local proxy IP address)
 ```
 
 The following methods may work, but need farther testing:
