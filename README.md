@@ -280,7 +280,7 @@ Refer to the following table for which version of binding node to use.
 
 # Other development issues
 
-### git clone too slow
+### git clone too slows
 Git clone too slow is usually caused by the ***Great Wall***. To solve this issue, git proxy needs to be set.
 Run the following commands before clone:
 
