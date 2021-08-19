@@ -298,14 +298,23 @@ git config --global --unset http.proxy
 ### Could not resolve host: github.com
 Open concole, and Ping github, copy the actual IP address from the replied message;
 Open and add the following to host file:  
-
+```sh
 "C:\Windows\System32\drivers\etc\hosts"
-
+```
 host file locations:
-
+```sh
 Windows 10 - "C:\Windows\System32\drivers\etc\hosts"
 Linux - "/etc/hosts"
 Mac OS X - "/private/etc/hosts"
+```
+
+### github.com credential settings
+Generate a PAT (personal access token) from github. 
+Set credential.helper to use system default:
+```sh
+git config --global credential.helper manager-core
+```
+Inside Credential Manager, replace password with the PAT.
 
 ### Could not detect node-abi error
 This error usually happens after a new electron version is installed.
