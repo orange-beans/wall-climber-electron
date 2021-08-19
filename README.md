@@ -280,7 +280,7 @@ Refer to the following table for which version of binding node to use.
 
 # Other development issues
 
-### git clone too slows
+### git clone too slow
 Git clone too slow is usually caused by the ***Great Wall***. To solve this issue, git proxy needs to be set.
 Run the following commands before clone:
 
@@ -294,6 +294,18 @@ To unset the proxy, run the following commands:
 git config --global --unset https.proxy
 git config --global --unset http.proxy
 ```
+
+### Could not resolve host: github.com
+Open concole, and Ping github, copy the actual IP address from the replied message;
+Open and add the following to host file:  
+
+"C:\Windows\System32\drivers\etc\hosts"
+
+host file locations:
+
+Windows 10 - "C:\Windows\System32\drivers\etc\hosts"
+Linux - "/etc/hosts"
+Mac OS X - "/private/etc/hosts"
 
 ### Could not detect node-abi error
 This error usually happens after a new electron version is installed.
