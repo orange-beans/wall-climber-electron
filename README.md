@@ -42,6 +42,12 @@ Or:
 yarn add <package names> --proxy http://127.0.0.1:3561 (local proxy IP address)
 ```
 
+To upgrade certain packages (no need to manuelly remove first):
+Or:
+```sh
+yarn upgrade <package names> --latest
+```
+
 The following methods may work, but need farther testing:
 ```sh
 ELECTRON_MIRROR="https://cdn.npm.taobao.org/dist/electron/""  yarn add <<package names>
