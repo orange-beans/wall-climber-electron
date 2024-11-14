@@ -70,7 +70,7 @@ To solve the problem, delete "node_modules/electron" folder, and use TAOBAO mirr
 ELECTRON_MIRROR="https:/npmmirror.com/electron/" yarn add electron
 ```
 
-#Electron Extensions issue
+### Electron Extensions issue
 ```sh
 [Error] 
 ... electron-devtool-installer ... cannot find map of undefined 
