@@ -35,7 +35,7 @@ yarn --proxy http://127.0.0.1:1080 (local proxy IP address)
 
 To install certain packages:
 ```sh
-ELECTRON_MIRROR="https:/npmmirror.com/electron/" yarn add <package names>
+ELECTRON_MIRROR="https:/npmmirror.com/electron/" yarn add --verbose <package names>
 ```
 Or:
 ```sh
@@ -50,7 +50,7 @@ yarn upgrade <package names> --latest
 
 The following methods may work, but need farther testing:
 ```sh
-ELECTRON_MIRROR="https://cdn.npm.taobao.org/dist/electron/""  yarn add <<package names>
+ELECTRON_MIRROR="https://cdn.npm.taobao.org/dist/electron/""  yarn add --verbose <package names>
 ```
 ```sh
 yarn add <package names> --proxy <local proxy IP address> (http://127.0.0.1:1080)
@@ -69,6 +69,16 @@ To solve the problem, delete "node_modules/electron" folder, and use TAOBAO mirr
 ```sh
 ELECTRON_MIRROR="https:/npmmirror.com/electron/" yarn add electron
 ```
+
+#Electron Extensions issue
+```sh
+[Error] 
+... electron-devtool-installer ... cannot find map of undefined 
+```
+This issue maybe due to failed to install Chrome extension; Do Copy from from backup folder into following locations:
+C:\Users\Administrator\AppData\Roaming\Electron\extensions\fmkadmapgofadopljbjfkapdkoienihi
+C:\Users\Administrator\AppData\Roaming\Electron\extensions\lmhkpmbekcpmknklioeibfkpmmfibljd
+
 
 # Electron Rebuild 
 ### Integrate @serialport module
