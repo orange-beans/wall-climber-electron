@@ -2,7 +2,7 @@
 #### Yarn config get registry
 Set mirror registry:
 ```sh 
-yarn config set registry https://registry.npm.taobao.org
+yarn config set registry https://registry.npmmirror.com
 ```
 Set original registry:
 ```sh 
@@ -26,20 +26,20 @@ The following methods are tested and proves to be working.
 
 To install all packages:
 ```sh
-ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn
+ELECTRON_MIRROR="https:/npmmirror.com/electron/" yarn
 ```
 Or:
 ```sh
-yarn --proxy http://127.0.0.1:3561 (local proxy IP address)
+yarn --proxy http://127.0.0.1:1080 (local proxy IP address)
 ```
 
 To install certain packages:
 ```sh
-ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add <package names>
+ELECTRON_MIRROR="https:/npmmirror.com/electron/" yarn add <package names>
 ```
 Or:
 ```sh
-yarn add <package names> --proxy http://127.0.0.1:3561 (local proxy IP address)
+yarn add <package names> --proxy http://127.0.0.1:1080 (local proxy IP address)
 ```
 
 To upgrade certain packages (no need to manuelly remove first):
@@ -53,10 +53,10 @@ The following methods may work, but need farther testing:
 ELECTRON_MIRROR="https://cdn.npm.taobao.org/dist/electron/""  yarn add <<package names>
 ```
 ```sh
-yarn add <package names> --proxy <local proxy IP address> (http://127.0.0.1:3561)
+yarn add <package names> --proxy <local proxy IP address> (http://127.0.0.1:1080)
 ```
 ```sh
-yarn add <package names> --ignore-engines --registry=https://registry.npm.taobao.org 
+yarn add <package names> --ignore-engines --registry=https://registry.npmmirror.com
 ```
 
 ### Electron module failed to install correctly
@@ -67,7 +67,7 @@ Electron failed to install correctly, please delete node_modules/electron and tr
 ```
 To solve the problem, delete "node_modules/electron" folder, and use TAOBAO mirror to download electron module again.
 ```sh
-ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add electron
+ELECTRON_MIRROR="https:/npmmirror.com/electron/" yarn add electron
 ```
 
 # Electron Rebuild 
@@ -88,17 +88,17 @@ TypeError: argv.t.split is not a function
 To solve the above problem, follow these steps:
 1. Remove the installed serialport from "app/nodule_modules", by running:
 ```sh
-ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn remove serialport
+ELECTRON_MIRROR="https:/npmmirror.com/electron/" yarn remove serialport
 ```
 
 2. Then install the serialport module with the following command:
 ```sh
-ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add serialport@x.x.x
+ELECTRON_MIRROR="https:/npmmirror.com/electron/" yarn add serialport@x.x.x
 ```
 
 3. cd into "app" folder, and run electron rebuild command, do replace the "--proxy http://127.0.0.1:3561" with your own proxy setting:
     ```sh
-    ../node_modules/.bin/electron-rebuild --proxy http://127.0.0.1:3561 -dist-url=https://npm.taobao.org/mirrors/atom-shell
+    ../node_modules/.bin/electron-rebuild --proxy http://127.0.0.1:3561 -dist-url=https://npmmirror/atom-shell
     ```
 4. Copy corresponding version of [serialport bindings](https://github.com/serialport/node-serialport/tags) into "app\node_modules\@serialport\bindings\build\Release" folder. Check which version of binding to use with the following table.
 
@@ -116,14 +116,14 @@ ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add serialport@x
 ### gyp-rebuild (with mirror)
 Run the following command if gyp-rebuild is needed, do change the "target" to corresponding electron version number.
 ```sh
-node-gyp rebuild --target=7.1.13 --arch=x64 --dist-url=https://npm.taobao.org/mirrors/atom-shell --msvs_version=2017
+node-gyp rebuild --target=7.1.13 --arch=x64 --dist-url=https://npmmirror.com/atom-shell --msvs_version=2017
 --dist-url=https://electronjs.org/headers"
 ```
 
 # Electron Package 
 Run the following command
 ```sh
-ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn package
+ELECTRON_MIRROR="https:/npmmirror.com/electron/" yarn package
 ```
 
 ### Stuck at packing stage
@@ -202,16 +202,16 @@ C:\Users\<username>\AppData\Local\node-gyp\Cache\[version]\x64
 1. Git clone electron-react-boilplate into local folder;
 2. Yarn install packages with the following command:
 ```sh
-ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn
+ELECTRON_MIRROR="https:/npmmirror.com/electron/" yarn
 ```
 3. Yarn install packages for App:
 ```sh
-ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add @material-ui/core @material-ui/icons @material-ui/lab @material-ui/styles material-table eventproxy immer lodash nedb dom-to-image js-file-download mdi-material-ui react-awesome-button recharts serialport
+ELECTRON_MIRROR="https:/npmmirror.com/electron/" yarn add @material-ui/core @material-ui/icons @material-ui/lab @material-ui/styles material-table eventproxy immer lodash nedb dom-to-image js-file-download mdi-material-ui react-awesome-button recharts serialport
 ```
 
 4. cd into */app* folder, run the following command to install serialport as native module for the app:
 ```sh
-ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn add serialport
+ELECTRON_MIRROR="https:/npmmirror.com/electron/" yarn add serialport
 ```
 
 Then download the corresponding version of [serialport bindings](https://github.com/serialport/node-serialport/tags) into *"\app\node_modules\@serialport\build\Release\bindings.node"*.
@@ -326,7 +326,7 @@ Inside Credential Manager, replace password with the PAT.
 This error usually happens after a new electron version is installed.
 Run the following command:
 ```sh
-ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/" yarn upgrade electron-rebuild
+ELECTRON_MIRROR="https:/npmmirror.com/electron/" yarn upgrade electron-rebuild
 ```
 
 ### Use NVM (node version manager) to manage node version
